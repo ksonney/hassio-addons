@@ -32,6 +32,7 @@ INTERFACE=$(jq --raw-output ".interface" $CONFIG_PATH)
 INTERNET_IF=$(jq --raw-output ".internet_interface" $CONFIG_PATH)
 ALLOW_INTERNET=$(jq --raw-output ".allow_internet" $CONFIG_PATH)
 HIDE_SSID=$(jq --raw-output ".hide_ssid" $CONFIG_PATH)
+WPA=$(jq --raw-output ".wpa" $CONFIG_PATH)
 
 DHCP_SERVER=$(jq --raw-output ".dhcp_enable" $CONFIG_PATH)
 DHCP_START=$(jq --raw-output ".dhcp_start" $CONFIG_PATH)
@@ -100,6 +101,7 @@ HCONFIG="/hostapd.conf"
 echo "Setup hostapd ..."
 echo "ssid=${SSID}" >> ${HCONFIG}
 echo "wpa_passphrase=${WPA_PASSPHRASE}" >> ${HCONFIG}
+echo "wpa=${WPA}" >> ${HCONFIG}
 echo "channel=${CHANNEL}" >> ${HCONFIG}
 echo "interface=${INTERFACE}" >> ${HCONFIG}
 echo "" >> ${HCONFIG}
